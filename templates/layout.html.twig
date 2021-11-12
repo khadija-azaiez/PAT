@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Navigation-->
+    {% include 'organisms/navigation/menu.html.twig' %}
+
+    <!-- Header-->
+    {% include 'organisms/global/header.html.twig' %}
+
+    <!-- Basket modal-->
+    {% include 'organisms/sections/basket.html.twig' %}
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer-->
+    {% include 'organisms/global/footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/basket.js') }}"></script>
+{% endblock %}

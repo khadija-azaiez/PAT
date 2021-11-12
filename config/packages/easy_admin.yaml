@@ -1,0 +1,60 @@
+easy_admin:
+    site_name: 'eShop | <em style="font-size: 80%;">Admin</em>'
+    design:
+        menu:
+            - { label: 'Accueil', route: 'eshop_homepage' }
+            - Product
+            - Order
+            - { entity: 'User', icon: 'user' }
+        brand_color: '#212529'
+        color_scheme: 'light'
+        assets:
+            favicon: '/img/favicon.png'
+    entities:
+        Product:
+            class: App\Entity\Product
+            label: 'Produits'
+            list:
+                actions: ['show']
+                title: "Liste des produits"
+            new:
+                title:  'Ajouter produit'
+            edit:
+                title:  'Modifier produit'
+        Order:
+            class: App\Entity\Order
+            label: 'Commandes'
+            list:
+                title: "Liste des commandes"
+                actions: ['show']
+                fields: ['id', { property: 'number', label: 'Numéro commande' }, { property: 'customer.name', label: 'Client' }]
+            disabled_actions: ['new', 'edit', 'delete']
+        User:
+            class: App\Entity\User
+            label: 'Clients'
+            disabled_actions: ['new']
+            list:
+                title: "Liste des clients"
+                actions: ['show']
+                fields: ['id', 'name', 'email', 'phone']
+            new:
+                fields:
+                    - name
+                    - email
+                    - phone
+                    - address
+            edit:
+                fields:
+                    - name
+                    - email
+                    - phone
+                    - address
+            show:
+                fields:
+                    - id
+                    - email
+                    - roles
+                    - name
+                    - phone
+                    - address
+                    - orders

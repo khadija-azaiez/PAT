@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-4 row-cols-xl-3 justify-content-center">
+
+                {{ form_start(form) }}
+                    {% if error|default %}
+                        <p class="alert-danger">{{ error }}</p>
+                    {% endif %}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.plainPassword.first) }}
+                    {{ form_row(form.plainPassword.second) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.address) }}
+
+                    <button class="btn btn-outline-dark mt-3" type="submit">S'inscrire</button>
+
+                    <p class="mt-5">
+                        Vous avez déjà un compte ? <a href="{{ path('login') }}">se connecter !</a>
+                    </p>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
