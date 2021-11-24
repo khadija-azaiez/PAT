@@ -22,7 +22,9 @@ final class OrderController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        // $productIds => [1, 3, 5]
         $productIds = $request->get('product');
+        // $quantities => [10, 5, 1]
         $quantities = $request->get('quantity');
 
         if (null === $productIds || null === $quantities) {

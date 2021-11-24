@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                {% include 'organisms/cards/card-product.html.twig' with {
+                    product: product
+                } only %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4 text-center">
+                    <input id="product-new-price" type="number" value="{{ product.price }}">
+
+                    <button class="btn btn-primary float-right mr-2" id="button-ok"
+                            onclick="changePrice({{ product.id }})"> OK
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-4 text-center">
+                    <button id="btn-toggle-product" type="button" onclick="toggleProduct2({{ product.id }})"
+                            class="btn {% if product.enabled is same as (true) %} btn-success {% else %} btn-danger {% endif %}">
+                        {% if product.enabled is same as (true) %} A désactiver {% else %} A activer {% endif %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/product-view.js') }}"></script>
+    <script src="{{ asset('js/product-price.js') }}"></script>
+{% endblock %}
+
+
+

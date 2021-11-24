@@ -1,0 +1,14 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+
+    <div class="row mt-2 mb-2">
+        {{ form_start(form) }}
+        {{ form_row(form.price) }}
+        <button type="submit" class="btn btn-primary float-right">recherche</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
